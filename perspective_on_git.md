@@ -17,11 +17,10 @@ In this article, I answer the questions which I had while learning git the third
 
 <summary><b>Question 1 - 
 If <code>git</code> is tracking versions of large code files, will it not consume surmountable memory to store it? Remember how we used to create backup of our work, and at certain time it would fill up our Gmail space? Will <code>git</code> have the same disadvantage?</b></summary>
-<br>
 
 - Storing text does not require large amounts of space. One character takes one byte of memory. Assuming, on average, one word takes 6 characters (including the space) 1MB can house roughly 166,600 words. Space required to store the largest novel (In search of lost time) consumes only 8MBs.  Furthermore, text compression techniques are highly efficient and sophisticated. Since code repositories are mainly text, it is not memory intensive for `git` to track it.
 
-- The other smart move `git` makes is it only stores the differences. For each file `git` maintains its base file (the first commit). As you make changes and commit, it stores the differences and discards the similarities as compared to the base file. However, this is a deferred operation. It initially stores complete snapshot of each file, and has a hook which computes and compress the difference(diff).
+- The other smart move `git` makes is it only stores the differences. For each file `git` maintains its base file (the first commit). As you make changes and commit, it stores the differences and discards the similarities as compared to the base file. However, this is a deferred operation. It initially stores complete snapshot of each file, and has a hook which computes and compress the difference <code>diff</code>. I have visuals for this in the next question.
 </details>
 
 <details>
@@ -44,12 +43,12 @@ objects
 refs
 ```
 
-The initialization creates several files. In this article we will focus on the contents of four files -
+The initialization creates several files. In this article my focus is on the contents of four files -
 
 <details>
 <summary><code>.git/HEAD</code></summary>
 <br>
-This stores the reference to the “current branch” of the repository. In my case I am currently on the main branch and so the output is 
+This stores the reference to the 'current branch' of the repository. In my case, I am currently on the main branch and so the output is 
 
 ```
 $ cat .git/HEAD
@@ -221,9 +220,9 @@ How can I visualize the commits?</b></summary>
 <br>
 <img src="commit_structure.png" alt="Visualizing Commit" width="600">
 
-- Each commit is represented by its hash value
-- For each commit blob is created for the files
-- If there are no changes to the file from previous commit, git simply points to the previous commit for that file
+- Each commit is identified by its hash value
+- For each commit corresponding blobs are created for the files
+- If there are no changes to a file git will simply point to its blob from previous commits (pretty neat!)
 
 </details>
 
@@ -231,12 +230,12 @@ ___
 
 A scenario that bothered me
 
-<b>If I do not need a file anymore and I delete it how will git handle this? It will be inefficient for git to keep a track of it or even store the previous versions of it.
+<b>If I delete a file which is not required in the project, how will <code>git</code> handle it? Since it is inefficient to track or store it, will it traverse through the commits and delete its blob?
 </b>
 
-Git commits are immutable. I cannot visit the previous commits and modify them to delete the corresponding blob. However moving forward, git will stop tracking this file, and as commits grow, git’s garbage collector will handle the clean up. 
+Git commits are immutable. I cannot visit the previous commits and modify them to delete the corresponding blob. However moving forward, git will stop tracking this file, and as commits grow, <code>git</code>’s garbage collector will clean it up. 
 
-Insight - Until there is a commit which has a reference to a file git garbage collector will not remove it. 
+Further Insight - Until there is a commit which refers to a file git garbage collector will keep it
 
 That is all from my curiosity on `git`. See you later!
 
