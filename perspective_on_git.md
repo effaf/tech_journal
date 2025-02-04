@@ -46,7 +46,7 @@ refs
 The initialization creates several files. In this article we will focus on the contents of four files -
 
 <details>
-<summary>`.git/HEAD`</summary>
+<summary> `.git/HEAD` </summary>
 <br>
 This stores the reference to the “current branch” of the repository. In my case I am currently on the main branch and so the output is 
 
@@ -58,7 +58,7 @@ When you checkout to a different branch, the HEAD gets updated accordingly
 </details>
 
 <details>
-<summary>`.git/objects`</summary>
+<summary> `.git/objects` </summary>
 <br>
  This is our storage. All the compressed files are stored here. It is named objects the files are stored as objects. Specifically, a binary large object (blob). Here is a visualization of changes taking place inside this repository for most commonly used commands. 
 
@@ -166,7 +166,7 @@ $ du
 The files, as expected, have been packed into one file (3f)!
 
 <details>
-<summary>`.git/refs`</summary>
+<summary> `.git/refs` </summary>
 <br>
 The is pointers book. Analogous to an address book.  This storage therefore helps git navigate efficiently. At initialization this is how it appears.
 ```
@@ -186,7 +186,7 @@ If you have an intuition for Graphs, git implements a Directed Acyclic Graph (DA
 </details>
 
 <details>
-<summary>`.git/logs `<summary>
+<summary> `.git/logs ` <summary>
 <br>
 As you might have noticed, this directory is not created at initialization. It is instantiated when the first commit is made. This is like a journal of our project. Here is how it is structured
 ```
@@ -207,6 +207,7 @@ Each line in a log file contains
 This helps in reversion or glimpsing at the history
 
 </details>
+
 </details>
 
 <details>
@@ -220,7 +221,7 @@ How can I visualize the commits?</b><summary>
 - For each commit blob is created for the files
 
 - If there are no changes to the file from previous commit, git simply points to the previous commit for that file
-
+</details>
 
 A scenario that bothered me
 
