@@ -1,12 +1,13 @@
-## How does he Git it?
+# How does he Git it?
 
-###### Constructing a vantage for Git by examining the components of the software
+#### Constructing a vantage for Git by examining the components of the software
+
 
 _This is an intermediate article covering few, but essential components of git._
 
-The very first time I hear the term git it was followed by hub. I visit the GitHub website, create an account, and, after a minute, close the tab. 
+The very first time I heard the term git it was followed by hub. I visit the GitHub website, create an account, and, after a minute, close the tab. 
 
-After nearly a year, I visit the website again. However, this time I am following a tutorial. I have initialized a local repository, staged the files, established connection to my GitHub account and am ready to push my files. I go through my files again and realize a Jupyter notebook is missing. It was a data preprocessing file I had spent a week coding. I panic. I search the sub directories, parent directory, recycle bin, and even my other drive, but cannot find the notebook. Exhausting all options, I download the old version I previously had sent my professor. I re-code it again and push it to GitHub. My blunder? I had created two local branches from master and did not know git branches control the files you see in the explorer. 
+After nearly a year, I visit the website again. However, this time I am following a tutorial. I have initialized a local repository, staged the files, established connection to my GitHub account and am ready to push my files. I go through my files again and realize a Jupyter notebook is missing. It was a data preprocessing file I had spent a week coding. I panic. I search the sub directories, parent directory, recycle bin, and even my other drive, but cannot find the notebook. Exhausting all options, I download the old version I previously had sent my professor. I re-code it again and push it to GitHub. My blunder? I had created two local branches from master and did not know `git` branches control the files you see in the explorer. 
 
 The third time, an older me, is reading a book on git. I learn to differentiate between local git repository and remote git repository. I learn about git branches, and how commits are implemented in git.
 
@@ -15,19 +16,19 @@ In this article, I answer the questions which I had while learning git the third
 <details>
 
 <summary><b>Question 1 - 
-If git is tracking versions of large code files, will it not consume surmountable memory to store it? Remember how we used to create backup of our work, and at certain time it would fill up our Gmail space? Will git have the same disadvantage?</b></summary>
+If <code>git</code> is tracking versions of large code files, will it not consume surmountable memory to store it? Remember how we used to create backup of our work, and at certain time it would fill up our Gmail space? Will <code>git</code> have the same disadvantage?</b></summary>
 <br>
 
-- Storing text does not require large amounts of space. One character takes one byte of memory. Assuming, on average, one word takes 6 characters (including the space) 1MB can house roughly 166,600 words. Space required to store the largest novel (In search of lost time) consumes only 8MBs.  Furthermore, text compression techniques are highly efficient and sophisticated. Since code repositories are mainly text, it is not memory intensive for git to track it.
+- Storing text does not require large amounts of space. One character takes one byte of memory. Assuming, on average, one word takes 6 characters (including the space) 1MB can house roughly 166,600 words. Space required to store the largest novel (In search of lost time) consumes only 8MBs.  Furthermore, text compression techniques are highly efficient and sophisticated. Since code repositories are mainly text, it is not memory intensive for `git` to track it.
 
-- The other smart move git makes is it only stores the differences. For each file git maintains its base file (the first commit). As you make changes and commit, it stores the differences and discards the similarities as compared to the base file. However, this is a deferred operation. It initially stores complete snapshot of each file, and has a hook which computes and compress the difference(diff).
+- The other smart move `git` makes is it only stores the differences. For each file `git` maintains its base file (the first commit). As you make changes and commit, it stores the differences and discards the similarities as compared to the base file. However, this is a deferred operation. It initially stores complete snapshot of each file, and has a hook which computes and compress the difference(diff).
 </details>
 
 <details>
-<summary><b>Question 2 - What are the files inside the git directory? What do they store, and what is their role?</b></summary>
-
-
-Initializing a git repo 
+<summary><b>Question 2 - What are the files inside the <code>git</code> directory? What do they store, and what is their role?</b></summary>
+<br>
+ 
+Initializing a <code>git</code> repo 
 
 ```
 $ git init git-visuals
@@ -46,7 +47,7 @@ refs
 The initialization creates several files. In this article we will focus on the contents of four files -
 
 <details>
-<summary> `.git/HEAD` </summary>
+<summary><code>.git/HEAD</code></summary>
 <br>
 This stores the reference to the “current branch” of the repository. In my case I am currently on the main branch and so the output is 
 
@@ -54,13 +55,13 @@ This stores the reference to the “current branch” of the repository. In my c
 $ cat .git/HEAD
 ref: refs/heads/main
 ```
-When you checkout to a different branch, the HEAD gets updated accordingly
+When you checkout to a different branch, the `HEAD` gets updated accordingly
 </details>
 
 <details>
-<summary> `.git/objects` </summary>
+<summary> <code>.git/objects</code> </summary>
 <br>
- This is our storage. All the compressed files are stored here. It is named objects the files are stored as objects. Specifically, a binary large object (blob). Here is a visualization of changes taking place inside this repository for most commonly used commands. 
+This is our storage. All the compressed files are stored here. It is named objects because the files are stored as objects. Specifically, a <b>bi</b>nary <b>l</b>arge <b>ob</b>ject (blob). Here is a visualization of changes that take place in the repository for commonly used commands. 
 
 ```
 $ cd git-visuals/.git/objects
@@ -69,7 +70,7 @@ $ du
 4       ./info
 ```
 
-Post initialization the objects directory only contains two empty directories. Currently, I do not have any files in my repository and hence this folder is empty. I will add a file containing a function to calculate the sum of all even numbers in an array.
+Post initialization the objects directory contains two empty directories. Currently, I do not have any files in my repository and hence this folder is empty. I will add a python script which calculates the sum of all even numbers in an array.
 
 ```
 $ cat array-sum.py
@@ -93,7 +94,7 @@ $ du
 4       ./info
 8       ./3f
 ```
-A new blob (/3f) is created with the contents of the file. Before I create a commit, I will add another function to add all the odd numbers in the module.
+A new blob <code>(/3f)</code> is created with the contents of the file. Before I commit, I will add another function to the script to add all the odd numbers
 
 ```
 $ cat array-sum.py
@@ -128,7 +129,7 @@ $ du
 8       ./3f
 ```
 
-Git creates another blob (21). For each time we stage the files, git takes a snapshot of it, even if they are the same files. 
+Git creates another blob <code>(/21)</code>. Each time we stage the files, git takes a snapshot of it, even if they are the same files. 
 
 Committing the files
 
@@ -163,12 +164,14 @@ $ du
 8       ./3f
 ```
 
-The files, as expected, have been packed into one file (3f)!
+The files, as expected, have been packed into one file <code>(3f)</code>!
+</details>
 
 <details>
-<summary> `.git/refs` </summary>
+<summary><code>.git/refs</code></summary>
 <br>
-The is pointers book. Analogous to an address book.  This storage therefore helps git navigate efficiently. At initialization this is how it appears.
+The is pointers book. Analogous to an address book.  This storage helps git navigate across commits efficiently. At initialization the directory looks like
+ 
 ```
 $ cd .git/refs
 $ du
@@ -178,17 +181,18 @@ $ du
 
 * `/.git/refs/heads` - Each branch has a reference stored inside this directory. The file points to the latest commit on the branch
 * `/.git/refs/tags` - Each tag has a reference stored here as well
-* `/.git/refs/remote` - Currently, I do not have the local repository connected to a remote repository, however if there were,  a reference would be stored here.
+* `/.git/refs/remote` - Currently, I do not have my local repository connected to a remote repository, however if there were,  a reference would be stored here.
 
-This directory can have several custom sub directories and does not follow a protocol.
+This directory can have several custom sub directories and does not follow a specific protocol.
 
 If you have an intuition for Graphs, git implements a Directed Acyclic Graph (DAG) of the commits.  The reference directory stores specific entry points to the DAG which helps in efficient graph traversal.
 </details>
 
 <details>
-<summary> `.git/logs ` <summary>
+<summary> <code>.git/logs</code> </summary>
 <br>
 As you might have noticed, this directory is not created at initialization. It is instantiated when the first commit is made. This is like a journal of our project. Here is how it is structured
+ 
 ```
 .git/logs/
 ├── HEAD                 # History of HEAD movements
@@ -197,31 +201,33 @@ As you might have noticed, this directory is not created at initialization. It i
     ├── heads/feature    # History of the `feature` branch
     └── remotes/origin/main  # History of remote `origin/main
 ```
-Each time a reference is changed it is made note of here. For example, if you move to a different branch, git will log the change. 
+
+Each time a reference is changed a note is made here. For example, if you move to a different branch, git will log the change. 
 
 Each line in a log file contains
 
 * The <b>old SHA-1 hash</b> (where the reference pointed before).
 * The <b>new SHA-1 hash</b> (where the reference points now).
 
-This helps in reversion or glimpsing at the history
+This helps in reversion or glimpsing through the history
 
 </details>
 
 </details>
 
 <details>
-<summary><b>Question 3
-How can I visualize the commits?</b><summary>
+<summary><b>Question 3 -
+How can I visualize the commits?</b></summary>
+<br>
+<img src="commit_structure.png" alt="Visualizing Commit" width="800">
  
- ![Visualizing Commit](commit_structure.png)
-
 - Each commit is represented by its hash value
-
 - For each commit blob is created for the files
-
 - If there are no changes to the file from previous commit, git simply points to the previous commit for that file
+
 </details>
+
+___
 
 A scenario that bothered me
 
@@ -230,6 +236,11 @@ A scenario that bothered me
 
 Git commits are immutable. I cannot visit the previous commits and modify them to delete the corresponding blob. However moving forward, git will stop tracking this file, and as commits grow, git’s garbage collector will handle the clean up. 
 
-Insight - Until there is a reference to a file in any commit git will track it. 
+Insight - Until there is a commit which has a reference to a file git garbage collector will not remove it. 
 
 That is all from my curiosity on `git`. See you later!
+
+
+## References
+1. [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/)
+2. [Git, Compression, and Deltas - An explanation](https://gist.github.com/matthewmccullough/2695758)
