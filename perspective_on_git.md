@@ -219,8 +219,8 @@ This helps in reversion or glimpsing through the history
 <summary><b>Question 3 -
 How can I visualize the commits?</b></summary>
 <br>
-<img src="commit_structure.png" alt="Visualizing Commit" width="800">
- 
+<img src="commit_structure.png" alt="Visualizing Commit" width="600">
+
 - Each commit is represented by its hash value
 - For each commit blob is created for the files
 - If there are no changes to the file from previous commit, git simply points to the previous commit for that file
