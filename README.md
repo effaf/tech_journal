@@ -1,6 +1,6 @@
 ## Tech Journal
 
-This repository contains tutorials, guides and articles on softwares I have worked on. Please hit me up if you spot an improvement.
+This repository contains articles on softwares I have worked on. Please hit me up if you spot an improvement.
 
 
 ## Contact
