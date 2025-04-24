@@ -2,7 +2,7 @@
 
 #### How publishing a package enabled me to write better code
 
-_This blog post is aimed for begineers to get an overview of creating and publishing python packages_
+_This blog post is aimed for beginners to get an overview of creating and publishing python packages_
 
 The first time I cloned a repository I felt intimidated by the number of files I could see in my directory. Primary reason for it being their dull names with foreign extensions. I did not bother to open all the files.
 
