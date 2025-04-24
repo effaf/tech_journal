@@ -27,7 +27,7 @@ Open up the repository to see the contents of the helper.py file [CSES-AID](http
 
 Install flake8, black, and pre-commit.
 ```
-pip install flake8, black, pre-commit 
+pip install flake8 black pre-commit
 ```
 
 Create `.flake8` file in the root directory and configure it. Here are the contents of my flake8 file. It defines the rules to ignore and the files to exclude from linting.
