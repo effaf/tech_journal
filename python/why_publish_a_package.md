@@ -160,6 +160,7 @@ If you have any questions about contributing, feel free to:
 - Open an issue in the repository
 
 ```
+
 </details>
 
 <details>
@@ -395,11 +396,14 @@ We need to build and publish the package now. Create an account on PyPI, and add
 
 Install required tools to build the package:
 
-`pip install build`
+```
+pip install build
+```
 
 Then run:
-
-`python -m build`
+```
+python -m build
+```
 
 This creates:
 
