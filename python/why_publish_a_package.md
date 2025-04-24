@@ -16,8 +16,7 @@ I have a codebase containing helper function to solve CSES problems. Before publ
 cses-aid/
 ├── src/
 │   └── cses_aid/           
-│       ├── helpers.py          
-
+│       ├── helpers.py
 ```
 Open up the repository to see the contents of the helper.py file [CSES-AID](https://github.com/effaf/cses_aid). I chose the NumPy style documentation for this package since it is suitable for math like functions. There are different types of documentation styles. Pick the one appropiate to your package. After completing the documentation, set up two tools which will help format our code before each commit. 
 
@@ -432,4 +431,4 @@ Then upload:
 twine upload dist/*
 ```
 
-We have published our package! Share it with your network!
+We have published our package! Share it with your network.
