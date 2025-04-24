@@ -112,7 +112,7 @@ SOFTWARE.
 </details>
 
 <details>
-<summary><code> CONTRIBUTING.md </code>
+<summary><code> CONTRIBUTING.md </code></summary>
 <br>
 
 This file is not mandatory, however it is a good practice to creeate a guide for contributors to your package. For a package in nascent changes you can scaffhold the contributing file from chatGPT and edit it to your use case.
@@ -419,7 +419,6 @@ Install twine if you haven’t:
 
 ```
 pip install twine
-
 ```
 Then upload:
 ```
