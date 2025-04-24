@@ -8,7 +8,7 @@ The first time I cloned a repository I felt intimidated by the number of files I
 
 Eventually, I realized computer projects are a bunch of files grouped together each having their specific purpose. I like to think of it as an IKEA furniture set which needs assembly. Each piece is different and has its purpose.
 
-A python package is similarly a group of files each having its own purpose. When publishing a package we need to create these files and configure them to successfully distribute our code.
+A python package similarly is a bunch of files each having its own purpose. When publishing a package we need to create these files and configure them to successfully distribute our code.
 
 I have a codebase containing helper function to solve CSES problems. Before publishing the package it is imperative we create documentations for each function in the codebase. This is my current directory structure
 
@@ -19,14 +19,16 @@ cses-aid/
 │       ├── helpers.py          
 
 ```
-Open up the repository to see the contents of the helper.py file [CSES-AID](https://github.com/effaf/cses_aid). I chose the NumPy style documentation for this package since it is suitable for math like functions. There are different types of documentation styles. Pick the one appropiate to your package. After completing the documentation. Let's set up two tools which will help format our code before each commit. 
+Open up the repository to see the contents of the helper.py file [CSES-AID](https://github.com/effaf/cses_aid). I chose the NumPy style documentation for this package since it is suitable for math like functions. There are different types of documentation styles. Pick the one appropiate to your package. After completing the documentation, set up two tools which will help format our code before each commit. 
 
-Flake8 - this is a linter which points the lines breaking the style guide. It does not modify the code.
-Black - this is a code formatter which changes your code to follow the style guide. It is one of my favorite packages and is widely appreciated.
+- __Flake8__ - this is a linter which points the lines breaking the style guide. It does not modify the code.<br>
+- __Black__ - this is a code formatter which changes your code to follow the style guide. It is one of my favorite packages and is widely appreciated.
 
 
-Install flake8, black, and pre-commit
-` pip install flake8, black, pre-commit`
+Install flake8, black, and pre-commit.
+```
+pip install flake8, black, pre-commit 
+```
 
 Create `.flake8` file in the root directory and configure it. Here are the contents of my flake8 file. It defines the rules to ignore and the files to exclude from linting.
 <details>
@@ -382,10 +384,15 @@ We have created all the files required to publish a package. You can have other 
 cses-aid/                          # Root directory of the project
 ├── src/                           # Source code folder
 │   └── cses_aid/                  # Main Python package
-│       ├── __init__.py            # Initializes the cses_aid package (top-level functions)
+│       ├── __init__.py            # Initializes the cses_aid package (think top-level functions)
 │       └── helpers.py             # Helper functions (the module)
 ├── tests/                         # Unit tests
+│   ├── __init__.py
 │   └── test_helper.py             # Tests for helpers.py
+├── .flake8                        # Flake8 configuration file
+├── .gitignore                     # Git ignored files
+├── .pre-commit-config.yaml        # Pre-commit hook configuration
+├── requirements.txt               # Project dependencies 
 ├── README.md                      # Project overview and usage
 ├── CONTRIBUTING.md                # Guidelines for contributing
 ├── LICENSE                        # Open source license
